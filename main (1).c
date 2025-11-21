@@ -1,0 +1,50 @@
+#include<stdio.h>
+int main()
+{
+    char ttt[9]={' ',' ',' ',' ',' ',' ',' ',' ',' '};
+    char move ='X';
+    int pos;
+
+    for (int i=0;i<=8;i++)
+    {
+        printf("Enter your pos:");
+        scanf("%d",&pos);
+
+        ttt[pos]=move;
+
+        printf("%c|%c|%c\n",ttt[0],ttt[1],ttt[2]);
+        printf("-+-+-\n");
+        printf("%c|%c|%c\n",ttt[3],ttt[4],ttt[5]);
+        printf("-+-+-\n"); 
+        printf("%c|%c|%c\n",ttt[6],ttt[7],ttt[8]);
+
+        // ---- FIXED WIN CONDITIONS ----
+        if(
+            (ttt[0]==move && ttt[1]==move && ttt[2]==move) ||
+            (ttt[3]==move && ttt[4]==move && ttt[5]==move) ||
+            (ttt[6]==move && ttt[7]==move && ttt[8]==move) ||
+            (ttt[0]==move && ttt[3]==move && ttt[6]==move) ||
+            (ttt[1]==move && ttt[4]==move && ttt[7]==move) ||
+            (ttt[2]==move && ttt[5]==move && ttt[8]==move) ||
+            (ttt[0]==move && ttt[4]==move && ttt[8]==move) ||
+            (ttt[2]==move && ttt[4]==move && ttt[6]==move)
+        )
+        {
+            printf("%c wins, Game Over", move);
+            break;
+        }
+        else
+        {
+            printf("Next move...\n");
+        }
+
+        // Switch player
+        if (move=='X')
+            move='O';
+        else
+            move='X';
+
+    }
+
+    return 0;
+}
